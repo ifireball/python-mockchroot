@@ -1,0 +1,2 @@
+This is a file that is meant to be made accessible inside the Mock chroot
+environment by use of bind-mounting.
