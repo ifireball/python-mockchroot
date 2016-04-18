@@ -39,8 +39,7 @@ def file(path, content):
     :param str path: The path to the file inside the Mock environment
     :param str content: The content of the file
 
-    :returns: Mock configuration string
-    :rtype: dict
+    :returns: Mock configuration object
     """
     return to['files'][path].set(content)
 
@@ -50,8 +49,7 @@ def env_vars(**vars):
 
     :param dict vars: A dictionary of variables mapped to values
 
-    :returns: Mock configuration string
-    :rtype: dict
+    :returns: Mock configuration object
     """
     return compose(*(
         to['environment'][var].set(value) for (var, value) in vars.iteritems()
@@ -61,10 +59,7 @@ def env_vars(**vars):
 def use_host_resolv():
     """Setup Mock to use name resolution from host
 
-    :returns: Mock configuration string
-    :rtype: dict
     :returns: Mock configuration object
-    :rtype: composition.Comosit
     """
     return compose(
         to['use_host_resolv'].set(True),

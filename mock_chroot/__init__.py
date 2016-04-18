@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""mock_chroot.py - Thin Python wrapper around mock(1)
+"""mock_chroot - Thin Python wrapper around mock(1)
 """
 import os
 from subprocess import check_output
@@ -10,20 +10,20 @@ __all__ = ['MockChroot']
 
 
 class MockChroot(object):
-    """Thin Python wrapper around mock(1)
+    """Create a Python wrapper object to magae *mock(1)* chroot environments
+
+    :param str root: The name or path for the mock configuration file to
+                        use
+    :param str config: The Mock configuration for the chroot as string or
+                        some other object that will yield a configuration
+                        string when passed to 'str()'
+
+    'root' and 'config' are mutually exclusive
     """
     # Star arguments are used in this class
     # pylint: disable=star-args
     def __init__(self, root=None, config=None):
-        """Create a mock(1) chroot
-        :param str root: The name or path for the mock configuration file to
-                         use
-        :param str config: The Mock configuration for the chroot as string or
-                           some other object that will yield a configuration
-                           string when passed to 'str()'
-
-        'root' and 'config' are mutually exclusive
-        """
+        """Create a mock(1) chroot """
         if root and config:
             raise RuntimeError(
                 "'root' and 'config' arguments are mutually exclusive"
@@ -216,7 +216,7 @@ class MockChroot(object):
 
     @classmethod
     def has_dnf(cls):
-        """Returns true in dnf is installed
+        """Returns true if dnf is installed
         """
         try:
             return cls._has_dnf

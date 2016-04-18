@@ -21,6 +21,7 @@ class Composit(list):
 
     The composition process is preformed upon conversion to string, it is done
     in the following stages:
+
     1. 'initialization' is called for all the configuration objects that have it
        in the order they were added to the Composit
     2. 'body' is called for all the configuration object that have it, in the
@@ -28,6 +29,7 @@ class Composit(list):
        methos are converted to string using 'str'
     3. 'finalization' is called for all the configuration objects that have it
        in reverse order to the one in which they were added to the Composit
+
     The returned values from all the method calls above are concatenated with
     newlines between them into one string which is returned.
 
